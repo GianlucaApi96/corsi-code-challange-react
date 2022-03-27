@@ -1,3 +1,44 @@
+#corsi-code-challange-react
+
+#Description
+this project is the front-end of the corsi-code-challange application.
+It is developed in javascript with the use of the react library, consists of 4 views: login, show reviews for employee ,
+send new review, and lastly a view of greetings. The purpose of this application is to monitor the happiness and collaboration level of a company's employees
+
+#Use
+to use this application enter the project directory and run the console's command npm start
+
+#Components
+Login component:contains features that have the purpose of allowing the user to log in.
+Review component:contains features that have the purpose of allowing the user to enter a new review.
+ReviewListComponent: contains features that have the purpose of allowing the user to view reviews.
+
+#Functions
+handleError: receives back end's errors message,
+handleResponse: receives back end's response data,
+handleChange: manages user data entry and field selection,
+findreview: manages parameters to search reviews,
+sendReview: manages parameters to send a new review,
+validateInfo: check that the user does not leave empty fields,
+
+#ReviewApi.js
+it contains the necessary function for back-end comunication
+
+#Authentication.js
+it contains the necessary function to log the user in, and storage his info(email,token)
+
+#Dependency
+Bootstrap
+Axios,
+Formik,
+React-router-dom,
+React-stars,
+Select,
+Rating
+
+#Developed By
+Gianluca Apicella
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
