@@ -3,14 +3,14 @@ import '../App.css';
 import '../Css/Style.css';
 import { Formik, FormikProps, Form, Field, ErrorMessage, validateYupSchema } from 'formik';
 import Authentication from "../Api/Authentication";
+import {responsiveFontSizes} from "@mui/material";
+import ReviewApi from "../Api/ReviewApi";
 
-export default class LoginComponent extends Component {
+export default class SignUpComponent extends Component {
     state = {
-        token:'',
         email: '',
-        isLogged: '',
-        noLogged: '',
-        errMessage: ''
+        errMessage: '',
+        okMsg:''
     }
 
     handleChange = (event) => {
@@ -33,20 +33,17 @@ export default class LoginComponent extends Component {
             errors.email = 1
             this.setState({errMsg:'il campo email è obbligatorio'});
         }
+
         return errors;
     }
 
-    login = () => {
-        Authentication.sanctumAuth(this.state.email).then((response) => {
-            this.setState({token:response.data.token})
-            Authentication.saveUserInfo(this.state.email,this.state.token);
-            this.props.history.push(`/reviews`);
-            console.log(this.props.history);
-        }).catch((error ) => {
-            this.handleError(error)
-            this.setState({isLogged:false})
-            this.setState({noLogged:true})
-        })
+
+    signup = () => {
+       Authentication.signup(this.state.email
+        ).then((response)=>{
+            this.setState({okMsg:response.data.message})
+            this.props.history.push(`/`);
+        }).catch(error=>this.handleError(error));
     }
 
 
@@ -60,25 +57,25 @@ export default class LoginComponent extends Component {
                 <section className="section">
                     <div className="card">
                         <div className="card-body">
-                            <h3 className="card-title mb-4">Login</h3>
+                            <h3 className="card-title mb-4">SignUp</h3>
                             <Formik
                                 validate={this.ValidateInfo}
                                 initialValues={{email}}
                                 enableReinitialize={true}
-                                onSubmit={this.login}
+                                onSubmit={this.signup}
                                 validateOnBlur={false}
                                 validateOnChange={false}
                             >
                                 {
                                     (props) => (
                                         <Form>
-
+                                            {this.state.okMsg && <div className="alert alert-success"><h5>{this.state.okMsg}</h5> </div>}
                                             {this.state.errMsg && <div className="alert alert-danger"><h5>{this.state.errMsg}</h5></div>}
                                             <div className="form-group row">
                                                 <label className="col-sm-2 col-form-label">Email *</label>
                                                 <Field type="email" name="email" className="col-sm-9" onChange={this.handleChange} value={this.state.email} />
                                             </div>
-                                            <button type="subimt" className="button" >Login</button>
+                                            <button type="subimt" className="button" >SignUp</button>
 
                                         </Form>
                                     )

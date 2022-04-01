@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Authentication  from './Authentication';
 import  {Redirect, Route} from 'react-router-dom';
-import axios from 'axios';
 
 
 export default class AuthRoute extends Component {
@@ -15,10 +14,14 @@ export default class AuthRoute extends Component {
     }
 
     render(){
+
         if(!Authentication.isLogged()){
+
             return <Redirect to="/"></Redirect>
         } else {
-            return <Route{...this.props}></Route>
+
+            console.log(this.props)
+            return <Route {...this.props} ></Route>
         }
 
     }

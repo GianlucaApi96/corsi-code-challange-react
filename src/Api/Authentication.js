@@ -12,6 +12,11 @@ class Authentication{
             {email});
     }
 
+    signup = (email) => {
+        return axios.post(`${this.state.Server}/api/user/create`,
+            {email});
+    }
+
     saveUserInfo= (email, token) => {
         sessionStorage.setItem("user",email);
         sessionStorage.setItem("token",token);
