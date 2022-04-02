@@ -1,0 +1,28 @@
+.section {
+    width: 600px;
+}
+
+.bye{
+    width:500px;
+    align-items: center;
+    text-align: center;
+}
+
+.button {
+    padding: 10px 40px;
+    outline: none;
+    border: 1px solid white;
+    cursor: pointer;
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    color:white;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-left: 220px;
+}
+
+.button:hover{
+    transition: all 0.3s ease-out;
+    background: linear-gradient(90deg, rgb(140, 199, 122) 0%, rgb(81, 138, 48) 100%);
+    color: white;
+    transition: 250ms;
+}
